@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="./img/icono.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Te damos la bienvenida</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/buzz/1.2.1/buzz.min.js">
+    </script>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="audio">
+            <button id="container_icon" onclick="changeStateVolume()">
+        <i id="icon" class=" far fa-play-circle"></i>
+      </button>
+        </div>
+
+        <div id="bienvenida">
+            <h1 id="titulo_bienvenida">Bienvenido al Dominó!</h1>
+
+            <button id="empezar" onclick="empezar()">Empezar</button>
+            <div id="autor"><a href="#">Sobre el autor</a></div>
+        </div>
+
+        <div id="login">
+            <div id="logo"><img src="./img/icono.png" alt="Logo"></div>
+            <input class="inputs" id="nombre1" type="text" placeholder="Ingrese el nombre del Jugador 1">
+            <input class="inputs" id="nombre2" type="text" placeholder="Ingrese el nombre del Jugador 2">
+            <button id="iniciar_juego" onclick="iniciarPartida()">Iniciar Partida</button>
+
+        </div>
+
+        <div id="juego">
+
+            <div id="menu_jugador1">
+                <div class="nombre">
+                    <p id="nombre_1"></p>
+                </div>
+                <div id="fichas_player1"></div>
+                <input type="number" id="input_player1" placeholder="Código de la ficha">
+
+                <select value="Extremo" id="extremo_1">
+          <option selected>Derecha</option>
+          <option>Izquierda</option>
+        </select>
+                <button class=" btn_lanzar " id="btn_lanzar1">Lanzar
+          ficha</button>
+            </div>
+            <div id="mesa_de_juego">
+                <button id="repositorio">+</button>
+                <p id="cadena_fichas"></p>
+            </div>
+            <div id="menu_jugador2">
+                <div class="nombre">
+                    <p id="nombre_2"></p>
+                </div>
+                <div id="fichas_player2"></div>
+                <input type="number" id="input_player2" placeholder="Código de la ficha">
+
+                <select name="Extremo" id="extremo_2">
+
+          <option selected>Derecha</option>
+
+          <option>Izquierda</option>
+
+
+
+        </select>
+                <button class="btn_lanzar" id="btn_lanzar2">Lanzar ficha</button>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+    </script>
+    <script src="./src/ConfiguracionDeSonido.js"></script>
+    <script src="./src/Ficha.js"></script>
+    <script src="./src/Jugador.js"></script>
+    <script src="./src/Domino.js"></script>
+    <script src="./src/Main.js"></script>
+</body>
+
+</html>
