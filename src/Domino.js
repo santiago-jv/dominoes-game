@@ -21,7 +21,12 @@ class Domino {
         this.createTokens();
         this.assignTokens();
         this.determineShift();
-
+        Toastify({
+            text: "Que inicie el juego!",
+            className: "info",
+            duration: 3000
+            
+        }).showToast();
         this.repository.addEventListener('click', this.provideMoreTokensToPlayer)
         this.buttonOfFirstPlayer.addEventListener('click', this.launchToken)
         this.buttonOfSecondPlayer.addEventListener('click', this.launchToken)
@@ -107,7 +112,6 @@ class Domino {
         this.renderTokensOfThePlayers();
 
         this.firstToken = higherToken;
-        console.log("La mayor ficha fue: " + this.firstToken.toString())
     }
 
     calculateHigher = (isHigherDouble) => {
@@ -163,7 +167,12 @@ class Domino {
 
                 if (this.isValidToken(player.tokens[index], extrem)) {
                     if (extrem == "") {
-                        alert("Selecciona un extremo para realizar la jugada")
+                        Toastify({
+                            text: "Selecciona un extremo para realizar la jugada",
+                            className: "error",
+                            duration: 3000
+                            
+                        }).showToast();
                         return null;
                     }
                     player.tokens.splice(index, 1)
@@ -184,21 +193,49 @@ class Domino {
                         this.repository.removeEventListener('click', this.provideMoreTokensToPlayer)
                         this.buttonOfFirstPlayer.removeEventListener('click', this.launchToken)
                         this.buttonOfSecondPlayer.removeEventListener('click', this.launchToken)
-                        alert("El juego ha terminado. El ganador es: " +
-                            player.getName)
+                        
+                        Toastify({
+                            text:"El juego ha terminado. El ganador es: " + player.getName,
+                            className: "info",
+                            duration: 3000
+                            
+                        }).showToast();
 
                     } else {
-                        alert("Ficha colocada correctamente. Ahora el turno es del jugador " + this.shiftPlayer.getName)
+                        Toastify({
+                            text: "Ficha colocada correctamente. Ahora el turno es del jugador " + this.shiftPlayer.getName,
+                            className: "info",
+                            duration: 3000
+                            
+                        }).showToast();
+                        
                     }
 
                 } else {
-                    alert(`La ficha  ${player.tokens[index].toString()} no puede colocarse`)
+                    Toastify({
+                        text:`La ficha  ${player.tokens[index].toString()} no puede colocarse.`,
+                        className: "error",
+                        duration: 3000
+                        
+                    }).showToast();
+
                 }
             } else {
-                alert("Índice rechazado", index)
+                Toastify({
+                    text:`Índice rechazado`,
+                    className: "error",
+                    duration: 3000
+                    
+                }).showToast();
             }
         } else {
-            alert("El turno le pertence a " + this.shiftPlayer.getName)
+            Toastify({
+                text:"El turno le pertence a " + this.shiftPlayer.getName,
+                className: "error",
+                duration: 3000
+                
+            }).showToast();
+         
         }
     }
 
@@ -214,12 +251,10 @@ class Domino {
                 let validatedToken = false;
                 if (extrem == 'Izquierda') {
                     if (this.thrownTokens[0].getFirstValue == token.getSecondValue) {
-                        console.log(this.thrownTokens)
                         this.thrownTokens.unshift(token);
                         validatedToken = true;
 
                     } else if (this.thrownTokens[0].getFirstValue == token.getFirstValue) {
-                        //invertir ficha
                         token.invertToken();
                         token.inverted = true
                         validatedToken = true;
@@ -236,14 +271,19 @@ class Domino {
 
 
                     } else if (this.thrownTokens[this.thrownTokens.length - 1].getSecondValue == token.getSecondValue) {
-                        //invertir ficha
                         token.invertToken();
                         token.inverted = true
                         validatedToken = true;
                         this.thrownTokens.push(token);
                     }
                 } else {
-                    alert('Escoge un extremo válido')
+                    Toastify({
+                        text: "Escoge un extremo válido",
+                        className: "error",
+                        duration: 3000
+                        
+                    }).showToast();
+                 
                 }
 
                 if (validatedToken) {
@@ -254,7 +294,13 @@ class Domino {
 
 
             } else {
-                alert("Tu cuentas con la mayor ficha para comenzar la partida (La  prioridad es lanzar la mayor ficha doble). ")
+                Toastify({
+                    text: "Tu cuentas con la mayor ficha para comenzar la partida (La  prioridad es lanzar la mayor ficha doble). ",
+                    className: "info",
+                    duration: 3000
+                    
+                }).showToast();
+              
             }
         }
 
@@ -262,7 +308,7 @@ class Domino {
 
     checkUtility = (token) => {
 
-        if (this.thrownTokens[0].getFirstValue == token.getSecondValue()) {
+        if (this.thrownTokens[0].getFirstValue == token.getSecondValue) {
             return true;
         } else if (this.thrownTokens[0].getFirstValue == token.getFirstValue) {
             return true;
@@ -288,7 +334,12 @@ class Domino {
 
                 if (this.checkUtility(this.shiftPlayer.tokens[i])) {
                     uselessToken = false;
-                    alert("Aún puedes realizar un lanzamiento con las fichas que tienes actualmente")
+                    Toastify({
+                        text: "Aún puedes realizar un lanzamiento con las fichas que tienes actualmente",
+                        className: "info",
+                        duration: 3000
+                        
+                        }).showToast();
                     break;
                 }
             }
@@ -300,7 +351,6 @@ class Domino {
                 random = parseInt(Math.random() * this.gameTokens.length);
 
                 token = this.gameTokens[random];
-                console.log(random, token)
                 this.gameTokens.splice(random, 1);
                 this.shiftPlayer.tokens.push(token);
                 this.renderTokensOfThePlayers();
@@ -310,7 +360,12 @@ class Domino {
             }
 
         } else {
-            alert('No has realizado el primer lanzamiento')
+            Toastify({
+                text: "No has realizado el primer lanzamiento",
+                className: "error",
+                duration: 3000
+                
+                }).showToast();
         }
     }
 }

@@ -4,7 +4,13 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+.error{
+    background: rgb(248, 40, 40) !important; ;
+}
+.info{
+    background: #fff !important;
+    color:#262626;
+}
 body {
     background-image: url(../images/background.jpg);
     background-size: cover;
