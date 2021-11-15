@@ -19,10 +19,10 @@ const startGame = () => {
     let firstPlayer = firstInput != "" ? firstInput : "Player 1",
         secondPlayer =  secondInput != "" ? secondInput : "Player 2";
 
-    const domino = new Domino(
+    const dominoes = new Dominoes(
         new Player(firstPlayer, 1),
         new Player(secondPlayer, 2)
     );
 
-    domino.startGame();
+    dominoes.startGame();
 };

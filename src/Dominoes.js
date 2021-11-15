@@ -2,7 +2,7 @@ const tableOfFirstPlayer = document.querySelector('#tokensOfFirstPlayer');
 const tableOfSecondPlayer = document.querySelector('#tokensOfSecondPlayer');
 const table = document.querySelector('#stringOfTokens');
 
-class Domino {
+class Dominoes {
     constructor(firstPlayer, secondPlayer) {
         this.firstPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;
